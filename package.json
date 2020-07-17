@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "elm-test"
+  },
   "dependencies": {
     "elm": "latest-0.19.1",
     "elm-test": "latest-0.19.1"

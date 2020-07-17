@@ -1,6 +1,6 @@
 module Exercise06 exposing (Person, decoder)
 
-import Json.Decode exposing (Decoder, fail)
+import Json.Decode exposing (Decoder, andThen, field, int, map, map2, string)
 
 
 
@@ -51,7 +51,9 @@ type alias Person =
 
 decoder : Decoder Person
 decoder =
-    fail "Implement me!"
+    map2 Person
+        (field "name" string)
+        (field "age" int)
 
 
 

@@ -1,6 +1,6 @@
 module Exercise05 exposing (decoder)
 
-import Json.Decode exposing (Decoder, fail)
+import Json.Decode exposing (Decoder, andThen, field, int, map, string)
 
 
 
@@ -29,7 +29,12 @@ import Json.Decode exposing (Decoder, fail)
 
 decoder : Decoder String
 decoder =
-    fail "Implement me!"
+    field "repeat" int
+        |> andThen
+            (\i ->
+                map (\s -> String.repeat i s)
+                    (field "term" string)
+            )
 
 
 

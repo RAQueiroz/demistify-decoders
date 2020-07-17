@@ -1,6 +1,6 @@
 module Exercise03 exposing (decoder)
 
-import Json.Decode exposing (Decoder, fail)
+import Json.Decode as JsonD exposing (Decoder, list, string)
 
 
 
@@ -19,7 +19,7 @@ import Json.Decode exposing (Decoder, fail)
 
 decoder : Decoder (List String)
 decoder =
-    fail "This is escalating quickly!"
+    list (JsonD.map String.toUpper string)
 
 
 

@@ -1,6 +1,6 @@
 module Exercise08 exposing (Color(..), decoder)
 
-import Json.Decode exposing (Decoder, fail, succeed)
+import Json.Decode exposing (Decoder, andThen, fail, string, succeed)
 
 
 
@@ -30,7 +30,18 @@ type Color
 
 decoder : String -> Decoder Color
 decoder colorString =
-    fail <| "I don't know a color named " ++ colorString
+    case colorString of
+        "green" ->
+            succeed Green
+
+        "blue" ->
+            succeed Blue
+
+        "red" ->
+            succeed Red
+
+        _ ->
+            fail <| "I don't know a color named " ++ colorString
 
 
 

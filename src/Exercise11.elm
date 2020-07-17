@@ -1,6 +1,6 @@
 module Exercise11 exposing (decoder)
 
-import Json.Decode exposing (Decoder, fail)
+import Json.Decode exposing (Decoder, int, list, map, null, oneOf)
 
 
 
@@ -30,7 +30,12 @@ import Json.Decode exposing (Decoder, fail)
 
 decoder : Decoder (List Int)
 decoder =
-    fail "Implement me!"
+    Json.Decode.field "number"
+        (oneOf
+            [ list int
+            , map List.singleton int
+            ]
+        )
 
 
 
